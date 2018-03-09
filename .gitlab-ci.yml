@@ -1,6 +1,17 @@
 image: python:latest
 
 before_script:
+  - curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+  - export PATH="/root/.pyenv/bin:$PATH"
+  - eval "$(pyenv init -)"
+  - eval "$(pyenv virtualenv-init -)"
+  # - pyenv install 2.6.9
+  - pyenv install 2.7.10
+  - pyenv install 3.2.6
+  - pyenv install 3.3.6
+  - pyenv install 3.4.3
+  - pyenv install 3.5.0
+  - pyenv install 3.6.1
   - pip install -r requirements.txt
   - pip install --upgrade virtualenv
   - pip install tox
