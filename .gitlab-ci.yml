@@ -1,6 +1,9 @@
 image: sonna/python-tox-test-env
 
 before_script:
+  - export PATH="/root/.pyenv/bin:$PATH"
+  - eval "$(pyenv init -)"
+  - eval "$(pyenv virtualenv-init -)"
   - pip install -r requirements.txt
   - pip install --upgrade virtualenv
   - pip install tox
