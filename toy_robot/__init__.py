@@ -1,6 +1,6 @@
 from builtins import input
 
-from robot import Robot
+from .robot import Robot
 
 
 def main(argv=None):
