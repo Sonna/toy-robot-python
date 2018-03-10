@@ -5,8 +5,8 @@ def main(argv=None):
     robot = Robot()
     args = ''
 
-    if argv != None and len(argv) > 1:
-        filename = argv[1] # get second argv, since 0 is 'toy_robot'
+    if argv is not None and len(argv) > 1:
+        filename = argv[1]  # get second argv, since 0 is 'toy_robot'
 
         with open(filename, 'r') as file:
             for line in file:
