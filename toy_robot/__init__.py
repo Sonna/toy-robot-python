@@ -1,3 +1,5 @@
+from builtins import input
+
 from robot import Robot
 
 
@@ -21,7 +23,7 @@ def main(argv=None):
         command = ''
 
         while command != 'EXIT':
-            line = raw_input('')
+            line = input('')
 
             input_args = line.split()
             command = input_args[0]
