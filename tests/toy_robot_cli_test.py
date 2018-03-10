@@ -36,6 +36,18 @@ class ToyRobotCLITestSuite(unittest.TestCase):
             self.assertIsNone(toy_robot.main())
         self.assertEqual(bf.out, '3, 4, SOUTH\n')
 
+    def test_example_a(self):
+        argvs = ['toy_robot', 'tests/data/example_a.txt']
+        with OutputBuffer() as bf:
+            self.assertIsNone(toy_robot.main(argvs))
+        self.assertEqual(bf.out, '0, 0, NORTH\n')
+
+    def test_example_b(self):
+        argvs = ['toy_robot', 'tests/data/example_b.txt']
+        with OutputBuffer() as bf:
+            self.assertIsNone(toy_robot.main(argvs))
+        self.assertEqual(bf.out, '0, 1, NORTH\n2, 1, EAST\n')
+
 
 if __name__ == '__main__':
     unittest.main()
