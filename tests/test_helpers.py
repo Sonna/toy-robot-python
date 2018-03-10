@@ -39,3 +39,25 @@ class OutputBuffer(object):
     @property
     def err(self):
         return self.stderr.getvalue()
+
+
+class InputBuffer(object):
+    def __init__(self, input_string=''):
+        self.stdin = StringIO(input_string)
+        self.stderr = StringIO()
+
+    def __enter__(self):
+        self.original_stdin, self.original_stderr = sys.stdin, sys.stderr
+        sys.stdin, sys.stderr = self.stdin, self.stderr
+        return self
+
+    def __exit__(self, exception_type, exception, traceback):
+        sys.stdin, sys.stderr = self.original_stdin, self.original_stderr
+
+    @property
+    def in_value(self):
+        return self.stdin.getvalue()
+
+    @property
+    def err(self):
+        return self.stderr.getvalue()
