@@ -1,7 +1,7 @@
 from robot import Robot
 
 
-def main():
+def main(argv=None):
     robot = Robot()
     command = ''
 
