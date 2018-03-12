@@ -1,12 +1,33 @@
-# class ToyRobot:
+from builtins import input
+
+from .robot import Robot
 
 
-def main():
-    """Entry point for the application script"""
-    print('hello world')
+def main(argv=None):
+    robot = Robot()
+    args = ''
 
-# if __name__ == '__main__':
-#     main()
-    # ToyRobot.main()
-# if __name__ == "__main__" and __package__ is None:
-#     __package__ = "toy_robot"
+    if argv is not None and len(argv) > 1:
+        filename = argv[1]  # get second argv, since 0 is 'toy_robot'
+
+        with open(filename, 'r') as file:
+            for line in file:
+                input_args = line.split()
+                command = input_args[0]
+
+                if len(input_args) > 1:
+                    args = input_args[1]
+
+                robot.call(command, args)
+    else:
+        command = ''
+
+        while command != 'EXIT':
+            line = input('')
+
+            input_args = line.split()
+            command = input_args[0]
+            if len(input_args) > 1:
+                args = input_args[1]
+
+            robot.call(command, args)
