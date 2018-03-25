@@ -1,0 +1,21 @@
+version: 2
+jobs:
+  test:
+    docker:
+    - image: sonna/python-tox-test-env
+    steps:
+    - checkout
+    - run: export PATH="/root/.pyenv/bin:$PATH"
+    - run: eval "$(pyenv init -)"
+    - run: eval "$(pyenv virtualenv-init -)"
+    - run: pip install -r requirements.txt
+    - run: pip install --upgrade virtualenv
+    - run: pip install tox
+    - run: tox
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+    - test
+
